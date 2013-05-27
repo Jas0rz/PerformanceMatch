@@ -4,6 +4,7 @@
     Author     : Jas0rz
 --%>
 <%@page import="java.sql.Connection"%>
+<%@page import="java.sql.*"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.SQLException"%>
@@ -16,32 +17,41 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>IF YOU CAN SEE THIS</title>
+        <title>HOUSE OF LIES</title>
     </head>
     <body>
-        <h1>Chris did not lie.</h1>
+        <h1>Chris has built one.</h1>
         <%= test() %>
     </body>
 </html>
 <%! public String test() {
 
+        
+    
         Connection con = null;
         Statement st = null;
         ResultSet rs = null;
 
-        String url = "jdbc:mysql://localhost";
+        String url = "jdbc:mysql://localhost:3306/PreformanceMatch199";
         String user = "pmadmin";
         String password = "yoloswag420";
         
         String result = "";
+        
+        try {
+            Class.forName("org.gjt.mm.mysql.Driver");
+        } catch (ClassNotFoundException e) {
+            result += e + "<br>\n";
+            
+        }
 
         try {
             con = DriverManager.getConnection(url, user, password);
             st = con.createStatement();
             rs = st.executeQuery("SHOW TABLES");
 
-            if (rs.next()) {
-                result += rs.getString(1);
+            while (rs.next()) {
+                result += rs.next() + "<br>\n";
             }
 
         } catch (SQLException ex) {
