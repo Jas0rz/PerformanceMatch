@@ -39,7 +39,7 @@
         String result = "";
         
         try {
-            Class.forName("org.gjt.mm.mysql.Driver");
+            Class.forName("com.msql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             result += e + "<br>\n";
             
