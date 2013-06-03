@@ -32,7 +32,7 @@
         Statement st = null;
         ResultSet rs = null;
 
-        String url = "jdbc:mysql://localhost:3306/PreformanceMatch199";
+        String url = "jdbc:mysql://localhost:3306/PerformanceMatch199";
         String user = "pmadmin";
         String password = "yoloswag420";
         
