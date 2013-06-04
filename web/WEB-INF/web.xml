@@ -13,7 +13,7 @@
     </servlet>
     <servlet>
         <servlet-name>test</servlet-name>
-        <servlet-class>test</servlet-class>
+        <servlet-class>test.test</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
