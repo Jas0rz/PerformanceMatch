@@ -1,80 +1,92 @@
 <%-- 
     Document   : index
-    Created on : 27-May-2013, 11:54:28 AM
-    Author     : Jas0rz
+    Created on : 2-Jun-2013, 5:08:39 PM
+    Author     : Chris Wallace <chris at devocean.com>
 --%>
-<%@page import="java.sql.Connection"%>
-<%@page import="java.sql.*"%>
+
+<%@page import="java.sql.ResultSetMetaData"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.SQLException"%>
 <%@page import="java.sql.Statement"%>
-<%@page import="java.util.logging.Level"%>
-<%@page import="java.util.logging.Logger"%>
-
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.SQLException"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>HOUSE OF LIES</title>
-    </head>
-    <body>
-        <h1>Chris has built one.</h1>
-        <%= test() %>
-    </body>
-</html>
-<%! public String test() {
 
-        
-    
-        Connection con = null;
-        Statement st = null;
-        ResultSet rs = null;
+<%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 
-        String url = "jdbc:mysql://localhost:3306/PreformanceMatch199";
-        String user = "pmadmin";
-        String password = "yoloswag420";
-        
-        String result = "";
-        
-        try {
-            Class.forName("org.gjt.mm.mysql.Driver");
-        } catch (ClassNotFoundException e) {
-            result += e + "<br>\n";
-            
-        }
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
 
-        try {
-            con = DriverManager.getConnection(url, user, password);
-            st = con.createStatement();
-            rs = st.executeQuery("SHOW TABLES");
+<f:view>
+    <html>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            <title>JSP Page</title>
+        </head>
+        <body>
+            <h1><h:outputText value="Hello World!"/></h1>
 
-            while (rs.next()) {
-                result += rs.next() + "<br>\n";
-            }
+			<%= test()%>
 
-        } catch (SQLException ex) {
-            result += "Nope: " + ex;
+		</body>
+	</html>
 
-        } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-                if (st != null) {
-                    st.close();
-                }
-                if (con != null) {
-                    con.close();
-                }
+	<%! public String test() {
 
-            } catch (SQLException ex) {
-                result += "Nope: " + ex;
-            }
-        }
-        
-        return result;
-    }
+			Connection con = null;
+			Statement st = null;
+			ResultSet rs = null;
 
-%>
+			String url = "jdbc:mysql://204.174.60.67:3306/PerformanceMatch199";
+			String user = "pmadmin";
+			String password = "yoloswag420";
+
+			String result = "";
+
+			try {
+				Class.forName("org.gjt.mm.mysql.Driver");
+			} catch (ClassNotFoundException e) {
+				result += e + "<br>\n";
+			}
+
+			try {
+				con = DriverManager.getConnection(url, user, password);
+				st = con.createStatement();
+				rs = st.executeQuery("Select * from cpu");
+
+				ResultSetMetaData rsmd = rs.getMetaData();
+				int numColumns = rsmd.getColumnCount();
+
+				while (rs.next()) {
+					for (int i = 1; i <= numColumns; i++) {
+						result += rs.getString(i) + "<br>\n";
+					}
+				}
+
+			} catch (SQLException ex) {
+				result += "Nope: " + ex;
+
+			} finally {
+				try {
+					if (rs != null) {
+						rs.close();
+					}
+					if (st != null) {
+						st.close();
+					}
+					if (con != null) {
+						con.close();
+					}
+
+				} catch (SQLException ex) {
+					result += "Nope: " + ex;
+				}
+			}
+
+			return result;
+		}
+
+	%>
+
+</f:view>
