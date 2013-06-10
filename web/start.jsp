@@ -17,7 +17,7 @@
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
             <link href="${facesContext.externalContext.requestContextPath}/style.css" rel="stylesheet" type="text/css"/>
-  		<script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
+			<script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
 			<script>
 				$(function() {
 					$("#component span.info[title]").tooltip({
@@ -46,16 +46,18 @@
             <div id="menu-wrapper"></div>
             <div id="upperBlock-wrapper"></div>
             <div id="pageBody-wrapper">
-				<div id="component">
+				<div id="component" class="shadow">
 					<h4>What would you like to do?</h4>
-				<h:selectOneListbox value="#{Customer.selectedGame}">
-					<f:selectItem itemValue="#{Customer.allGames[0]}" itemLabel="1" />
-					<f:selectItem itemValue="#{Customer.allGames[1]}" itemLabel="2" />
-					<f:selectItem itemValue="#{Customer.allGames[2]}" itemLabel="3" />
-					<f:selectItem itemValue="#{Customer.allGames[3]}" itemLabel="4" />
-				</h:selectOneListbox>
-					&nbsp;
-				<h:commandButton value="Submit" action="results"></h:commandButton>
+					<h:form>
+						<h:selectOneListbox value="#{Customer.selectedGame}">
+							<f:selectItem itemValue="#{Customer.allGames[0]}" itemLabel="1" />
+							<f:selectItem itemValue="#{Customer.allGames[1]}" itemLabel="2" />
+							<f:selectItem itemValue="#{Customer.allGames[2]}" itemLabel="3" />
+							<f:selectItem itemValue="#{Customer.allGames[3]}" itemLabel="4" />
+						</h:selectOneListbox>
+						&nbsp;
+						<h:commandButton id="submit" value="Go!" action="continue"/>
+					</h:form>
 				</div>
 			</div>
             <div id="footer-wrapper"></div>

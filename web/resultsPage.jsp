@@ -4,6 +4,7 @@
     Author     : Chris Wallace <chris at devocean.com>
 --%>
 
+<%@page import="components.Build"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
@@ -11,6 +12,8 @@
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
+
+
 
 <f:view>
     <html>
@@ -45,6 +48,7 @@
             <div id="header-wrapper">Build a Machine</div>
             <div id="menu-wrapper"></div>
             <div id="upperBlock-wrapper"></div>
+			
             <div id="pageBody-wrapper">
 				<div id="component" class="shadow">
 					<span class="compName">Here's a Component!</span>
@@ -54,14 +58,7 @@
 						This is where additional information might be hiding.
 					</p>
 				</div>
-				<div id="component" class="shadow">
-					<span class="compName">This is Another One</span>
-					<span class="info" title="Hi Mom!">?</span>
-					<span class="expand">+</span>
-					<p class="expandable">
-						This is where additional information might be hiding.
-					</p>
-				</div>
+			
 			</div>
             <div id="footer-wrapper"></div>
         </body>

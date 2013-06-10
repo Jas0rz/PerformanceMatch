@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!-- =========== FULL CONFIGURATION FILE ================================== -->
+
+<faces-config version="2.1"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd">
+	
+	<!-- <managed-bean>
+        <managed-bean-name>customerBean</managed-bean-name>
+        <managed-bean-class>beans.Customer</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+        
+        <managed-property>
+            <property-name>name</property-name>
+            <value>Your Name</value>
+        </managed-property>
+       
+        <managed-property>
+            <property-name>address</property-name>
+            <value>Your Address</value>
+        </managed-property>
+        
+    </managed-bean> -->
+    
+    <navigation-rule>
+        <from-view-id>/start.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>continue</from-outcome>
+            <to-view-id>/resultsPage.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+
+</faces-config>
