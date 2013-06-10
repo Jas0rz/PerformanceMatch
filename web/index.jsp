@@ -82,11 +82,9 @@
 				} catch (SQLException ex) {
 					result += "Nope: " + ex;
 				}
-			}
-
+			} 
 			return result;
 		}
-
 	%>
 
 </f:view>
